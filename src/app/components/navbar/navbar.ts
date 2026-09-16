@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
-interface Food{
-  valor: string;
-  valorAMostrar: string;
+interface NavLink {
+  path: string;
+  label: string;
 }
 
-
 @Component({
-  imports: [MatTabsModule],
   selector: 'app-navbar',
+  standalone: true,
+  imports: [MatToolbarModule, MatButtonModule, RouterLink, RouterLinkActive],
   styleUrl: './navbar.scss',
   templateUrl: './navbar.html',
 })
 export class Navbar {
-  comidas: Food[] = [
-    {valor: 'steak-0', valorAMostrar: 'Steak'},
-    {valor: 'pizza-1', valorAMostrar: 'Pizza'},
-    {valor: 'tacos-2', valorAMostrar: 'Tacos'},
+  navLinks: NavLink[] = [
+    { path: '/home', label: 'Inicio' },
+    { path: '/servicios', label: 'Servicios' },
+    { path: '/contacto', label: 'Contacto' },
   ];
 }
